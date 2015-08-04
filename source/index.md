@@ -2,11 +2,12 @@
 title: DroneKit-Cloud
 
 language_tabs:
-  - shell
   - python
+
   
 toc_footers:
   - <a href='https://cloud.dronekit.io/signup'>Sign Up for a Developer Key</a>
+  - <a href='http://www.droneshare.com/#create'>Create an account on DroneShare</a>  
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 
@@ -15,362 +16,68 @@ search: true
 
 # Introduction
 
-<aside class="warning">
-This document is an un-reviewed draft. It may not accurately reflect the current API or its future direction.
-</aside>
-
 Welcome to DroneKit-Cloud, 3D Robotic's cloud API for drone management and control.
 
-This first release of the API (v1) lets you store, share, and access vehicle and flight log information using simple REST APIs. We hope you will use it to build advanced drone tracking web apps like [Droneshare](http://www.droneshare.com/) and as a source of useful drone usage data.
+DroneKit-Cloud API v1 lets you store, share, and access vehicle and flight log information using simple REST APIs. We hope you will use it to build drone tracking web apps like [Droneshare](http://www.droneshare.com/), and as a source of useful data about worldwide drone usage.
 
-In future releases we hope to extend the API to support live tracking and control of vehicles supporting the MAVLink protocol.
-
-This documentation provides the information you need to get started. It includes the instructions on how to get an API id/key used for authorisation, API reference docs, and code fragments showing how to call many of the endpoints using Python and cURL (displayed in the right-pane relative next to their associated documentation).
+This documentation provides the information you need to get started. It includes the instructions on how to get an API id/key used for authorisation, API reference docs, and code fragments showing how to call many of the endpoints using Python (displayed in the right-pane relative next to their associated documentation).
 
 If need more help, the best places to ask questions are our [discussion list](https://groups.google.com/forum/#!forum/drone-platform) and [StackOverflow](http://stackoverflow.com/questions/tagged/dronekit-cloud).
 
 
-# Get Started
+## Get Started
 
-> To authorize, use this code:
-
-```python
-
-```
-
-```shell
-# TBD Show how done for different requests - this is supposed to be POST, but need to check
-curl -d '{"some": "jsondata"}'  https://api.droneshare.com/api/v1/endpoint?api_key=app_id.your_app_key
-```
-
-In order to use the API you will need to [sign up for an API key](https://cloud.dronekit.io/signup) with the DroneKit-Cloud service, and also [create an account on DroneShare](http://www.droneshare.com/#create). Joining both services is quick, easy and free. 
-
-After logging into DroneKit you will find your *App ID* and *App Key* [at this link](https://cloud.dronekit.io/). DroneKit expects for the ID and key to be included in all API requests to the server (expressed in the format `app_id.your_app_key`).  
-
-The API base url is `https://api.droneshare.com/api/v1/` and the available endpoints are listed [below](#auth-session-operations).
-
-Examples of how to use the API and authorise requests are shown on the right-pane. Make sure to replace `app_key` with your own id and key.
-
-
-
-# Examples
-
-A complete example in CoffeeScript is available in the form of the [DroneShare Website source code](              https://github.com/diydrones/droneshare). The most relevant file is [dapiServices.coffee](https://github.com/diydrones/droneshare/blob/master/src/scripts/services/dapiServices.coffee). 
-
-
-
-# API Overview
-
-TBD: 
-
-- Cover privacy settings/privacy control: - (DEFAULT, PRIVATE, PUBLIC, SHARED, RESEARCHER)
-- Explain what the main parts of the API do for you
-- Explain benefits of login/what APIs it affects
-TBD. Need to confirm what exactly ability to login gives you, as currently the default plan doesn't give you login rights.
-
-
-
-# auth - Session operations
-
-Session operations (login, logout, etc...) are managed through the ``auth`` endpoint. Some operations (not all) require that a session is set up.
-
-## Create a new user record
-
-```python
-
-```
-
-```shell
-curl -d '{"login": "TheNewLogin", "password": "TheNewPassWord", "email": "anEmail@somedomain.com"}' https://api.droneshare.com/api/v1/user?api_key=appid.keyid 
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{
-  "login": "",
-  "email": "",
-  "fullName": "",
-  "password": "",
-  "tokens": {
-    "owner": {},
-    "conditions": [
-      ""
-    ],
-    "foreignKey": "",
-    "manifest": {},
-    "allConditions": [
-      ""
-    ],
-    "hasConstraint": false,
-    "relation1": {
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_isLoaded": false,
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_cache": [
-        {}
-      ],
-      "companion": {},
-      "parameters": "Parameters[ActiveRecordBase[Object], Tuple1[ActiveRecordBase[Object]], Object]",
-      "queryable": {},
-      "manifest": {}
-    },
-    "associationClass": {},
-    "companion": {},
-    "source": {
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_isLoaded": false,
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_cache": [
-        {}
-      ],
-      "companion": {},
-      "parameters": "Parameters[ActiveRecordBase[Object], Tuple1[ActiveRecordBase[Object]], Object]",
-      "queryable": {},
-      "manifest": {}
-    }
-  },
-  "hashedPassword": "",
-  "groupId": "",
-  "lastLoginDate": "",
-  "lastLoginAddr": "",
-  "defaultViewPrivacy": 0,
-  "defaultControlPrivacy": 0,
-  "emailVerified": false,
-  "needNewPassword": false,
-  "wantEmails": false,
-  "passwordResetToken": 0,
-  "passwordResetDate": "",
-  "numberOfLogins": 0,
-  "vehicles": {
-    "owner": {},
-    "conditions": [
-      ""
-    ],
-    "foreignKey": "",
-    "manifest": {},
-    "allConditions": [
-      ""
-    ],
-    "hasConstraint": false,
-    "relation1": {
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_isLoaded": false,
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_cache": [
-        {}
-      ],
-      "companion": {},
-      "parameters": "Parameters[ActiveRecordBase[Object], Tuple1[ActiveRecordBase[Object]], Object]",
-      "queryable": {},
-      "manifest": {}
-    },
-    "associationClass": {},
-    "companion": {},
-    "source": {
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_isLoaded": false,
-      "com$github$aselab$activerecord$inner$Relations$Relation$$_cache": [
-        {}
-      ],
-      "companion": {},
-      "parameters": "Parameters[ActiveRecordBase[Object], Tuple1[ActiveRecordBase[Object]], Object]",
-      "queryable": {},
-      "manifest": {}
-    }
-  },
-  "grizzled$slf4j$Logging$$_logger": {}
-}
-```
-
-This endpoint creates a new login.
-
-Logins [created through droneshare](http://www.droneshare.com/create) can be used with the service.
-
-<aside class="warning">Direct programmatic creation of logins is not supported in DroneKit-Cloud v1 (this operation can only be performed using an "administrator" key that is not publically available).</aside>
-
-
-### HTTP Request
-
-`POST /auth/create`
-
-### Query Parameters
-
-> The Json Model Schema for the body parameter (`UserJson`) is:
-
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-body | [UserJson](#userjson) | body | Y | Json object with new user values
-
-
-
-
-
-
-## Login user
+> This code shows the format of a query URL (in this case to get all users), and the api_key parameters. 
+> API calls which create or modify records must additionally pass *DroneShare* userid and password as parameters.
 
 ```python
 import requests
 
-# apikey = appid.appkey
-# options.username, options.password are DroneKit-Cloud username and password
-# baseurl is http://api.droneshare.com/api/v1/'
-
-def login():
-	print "Logging In"
-	r = requests.post(baseurl + 'auth/login',
-		params = {"api_key": apikey},
-		data = {"login": options.username, "password":options.password})
-	print r.status_code
-	print r.text
-
-login()
+url=http://api.3drobotics.com/api/v1/users #url to get all users
+r = requests.get(url, 
+    params = {"api_key": appid.appkey},  #Replace appid and appkey with the id/key from DroneKit. 
+    )
+print 'Status code: %s' % r.status_code
+print(r.text)
 ```
 
-```shell
+In order to use the API you will need to [sign up for a free API key](https://cloud.dronekit.io/signup) with the DroneKit-Cloud service. After logging into DroneKit you will find your *App ID* and *App Key* [at this link](https://cloud.dronekit.io/). 
 
-```
+This key must be included in all requests (expressed in the format `app_id.your_app_key`) and grants permission to:
 
-> The command returns JSON with this Model Schema:
+* read and update users, 
+* create, update and read vehicles. 
+* create, update and read missions (limited to 500 calls/month).
 
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
+Requests that create/modify information on the service must also include a [DroneShare](http://www.droneshare.com/) user id and password (they will return HTTP 401 "You do not own this record" if no login details are provided). You can [create a free account on DroneShare here](http://www.droneshare.com/#create).
 
-This endpoint logs into the service using the specified account parameters. A session is required in order to successfully call some endpoints.
+The API base url is `http://api.3drobotics.com/api/v1/` and the available endpoints are listed below.
 
-Logins [created through droneshare](http://www.droneshare.com/create) can be used with the service (note that you need to have also confirmed the account using the email sent when you create the login).
-
-
-### HTTP Request
-
-`POST /auth/login`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-login | string | form | Y | The loginName for the account
-password | string | form | Y | The password for the account
-
-### Error codes
-
-
-HTTP Status Code | Reason
---------- | ------- 
-403 | login attempt failed
+Examples of how to use the API and authorise requests are shown on the right-pane (replace `app_key` with your own id and key).
 
 
 
-## Logout current user
+## Examples
 
-```python
+* The Python examples shown in this document can be downloaded from here ADD LINK. 
+  You you will need to have Python (2.7) installed and pass your api keys and droneshare password:
+  ``dronecode_cloud_example_code_in_python.py  -u droneshare_userid -p droneshare_password -a dronekit_appid -k dronekit_appkey``
 
-```
-
-```shell
-curl -d '' https://api.droneshare.com/api/v1/auth/logout?api_key=appid.keyid 
-```
-
-> The command returns a string like this:
-
-```json
-
-```
-
-This endpoint logs the user out of the current session.
-
-
-### HTTP Request
-
-`POST /auth/logout`
-
-
-### Query Parameters
-
-There are no query parameters.
+* A complete example in CoffeeScript is available in the form of the [DroneShare Website source code](https://github.com/diydrones/droneshare). The most relevant file is [dapiServices.coffee](https://github.com/diydrones/droneshare/blob/master/src/scripts/services/dapiServices.coffee). 
 
 
 
 
-## Get current logged-in user
 
 
-```python
+# /user - User operations
 
-```
-
-```shell
-
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
-
-This endpoint gets the object for the current logged in user, or an error code if no user is logged in.
-
-
-### HTTP Request
-
-`GET /auth/user`
-
-### Query Parameters
-
-None
-
-### Error codes
-
-
-HTTP Status Code | Reason
---------- | ------- 
-401 | User is not logged in
-
-
-
-
-# user - User operations
-
-This API exposes operations for browsing and searching lists of users, and retrieving single user. 
-
-TBD: What does privacy mean. What information is available about users? Looks like default is to expose nothing other than userid and full name and gravitar. Also vehicles, but deal with that separately. Can we change the privacy? 
+This API exposes operations for browsing and searching lists of users, and retrieving information about a single user. 
 
 
 ## JSON Objects
+
+This section contains Json objects returned or used by the /user API.
 
 ### UserJson
 
@@ -413,28 +120,24 @@ defaultControlPrivacy | EnumVal |  | The control privacy setting
 ```python
 import requests
 
-# apikey = appid.appkey
-# options.username, options.password are DroneKit-Cloud username and password
-# baseurl is http://api.droneshare.com/api/v1/'
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
 
-
-def get_users():
-	print "Getting all users info"
-	r = requests.get(baseurl + 'auth/user',
-		params = {"api_key": apikey})
-	print r.status_code
-	print r.text
-
-get_users()
+def allusers(aPageSize=100,aPageOffset=0):
+    # Get all users
+    r = requests.get(options.baseurl + 'user', 
+		params = {"api_key": apikey, "page_offset":aPageOffset,"page_size": aPageSize},
+        )
+    print 'Status code: %s' % r.status_code
+    print 'Number of users: %s' % len(r.json())
+    pprint.pprint(r.json())
+	
+print "\nGet all users (pagesize:2, pageoffset:40"	
+allusers(aPageSize=2,aPageOffset=40)
 ```	
 
 
-
-```shell
-
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 [
@@ -467,69 +170,9 @@ The query parameters are:
 Parameter | Parameter type | Data type | Description
 --------- | ------- | ------- | -----------
 page_offset| query | integer | If paging, the record # to start with (use 0 at start)
-page_size| query | integer | If paging, the # of records in the page
+page_size| query | integer | If paging, the # of records in the page. The default and maximum page size is 100 records.
 order_by| query | string | To get sorted response, the field name to sort on
 order_dir| query | string | If sorting, the optional direction. either asc or desc
-
-
-
-
-
-## Create user with auto-ID
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
-
-This endpoint creates a new user object with a dynamically constructed ID.
-
-TBD. 
--Do you need to be logged into create this user. HOw does this differ from the auth command version. Do you still need special keys? What is the string returned.
-- What is format of wantsEmails
-- What is format of groups. How do groups work?
-- What are the privacy settings. 
-- Above need to suggest what should be set when creating a user.
-
-
-### HTTP Request
-
-`PUT /user`
-
-
-### Query Parameters
-
-> The Json Model Schema for the body parameter is:
-
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-body | [UserJson](#userjson) | body | Y | Json object with updated user values
-
 
 
 
@@ -537,14 +180,27 @@ body | [UserJson](#userjson) | body | Y | Json object with updated user values
 ## Find user by id
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+def userbyid(aId):
+    # Get user with specified id
+    r = requests.get(options.baseurl + 'user' + '/' + aId, 
+		params = {"api_key": apikey}
+        )
+    print 'Status code: %s' % r.status_code
+    pprint.pprint(r.json())
+
+
+print "Get user by id: %s" % 'mrpollo'
+userbyid('mrpollo')
 ```
 
-```shell
 
-```
 
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 {
@@ -580,162 +236,35 @@ id | string | path | Y | Id of user that needs to be fetched
 
 
 
-
-## Update user by id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string.
-
-This endpoint updates a specified (by loginName) user with new information.
-
-
-### HTTP Request
-
-`PUT /user/{id}`
-
-
-### Query Parameters
-
-> The Json Model Schema for the body parameter is:
-
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id (loginName) of user that needs to be updated
-body | [UserJson](#userjson) | body | Y | Json object with updated user information
-
-
-
-
-
-## Delete user by id
+## Get param in user 
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+def userparambyid(aId,aParam):
+    # Get param value for user with specified id
+    r = requests.get(options.baseurl + 'user' + '/' + aId + '/' + aParam, 
+		params = {"api_key": apikey}
+        )
+    return r
+
+print "fullName"
+r=userparambyid('hamishwillee','fullName')
+print 'Status code: %s' % r.status_code
+print(r.text)
 ```
 
-```shell
-
-```
-
-> The command returns a string
-
-```json
-
-```
-
-This endpoint deletes the specified user (by loginName) from the database.
-
-TBD - who can do this? What if this is the currently logged in user?
-
-
-### HTTP Request
-
-`DELETE /user/{id}`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id (loginName) of user that needs to be deleted
-
-
-
-
-## Create user by id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
-
-This endpoint creates a user with the specified id.
-
-
-### HTTP Request
-
-`POST /api/v1/user/{id}`
-
-
-### Query Parameters
-
-> The Json Model Schema for the body parameter is:
-
-```json
-{
-  "login": "",
-  "password": "",
-  "email": "",
-  "fullName": "",
-  "wantEmails": "",
-  "groups": "",
-  "oldPassword": "",
-  "defaultViewPrivacy": {},
-  "defaultControlPrivacy": {}
-}
-```
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id (loginName) of user that needs to be updated
-body | [UserJson](#userjson) | body | Y | Json object with updated user information
-
-
-
-## Get specified user value
-
-```python
-
-```
-
-```shell
-
-```
 
 > The command returns the requested value as a JValue:
 
 ```json
-{
-}
+{Hamish Willee}
 ```
 
-This endpoint returns the value (`JValue`) of a specified parameter for a given user
+This endpoint returns the value (`JValue`) of a specified parameter for a given user.
 
 
 ### HTTP Request
@@ -750,17 +279,13 @@ The query parameters are:
 Parameter | Data Type | Parameter Type | Required | Description
 --------- | ------- | ------- | ------- | -----------
 id | string | path | Y | Id of user that needs to be fetched
-param | string | path | Y | The parameter to read from the object
+param | string | path | Y | The parameter to read from the object. This has returns valid values for ``fullName``, ``id``, ``emailVerified``, ``needNewPassword`` (other parameters return 404 and 500 errors). 
 
 
 
 
 
-
-
-
-
-# mission - Mission operations
+# /mission - Mission operations
 
 This command exposes operations for browsing and searching lists of missions, and retrieving a single mission. 
 
@@ -830,14 +355,26 @@ isLive | boolean |  |
 ## Show all missions
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+def allmissions(aPageSize=100,aPageOffset=0):
+    # Get all users
+    r = requests.get(options.baseurl + 'mission', 
+		params = {"api_key": apikey, "page_offset":aPageOffset,"page_size": aPageSize},
+        )
+    print 'Status code: %s' % r.status_code
+    print 'Number of missions in page: %s' % len(r.json())
+    pprint.pprint(r.json())
+	
+print "\nGet all missions (pagesize:5, pageoffset:30)"	
+allmissions(aPageSize=5,aPageOffset=30)
 ```
 
-```shell
 
-```
-
-> The command returns JSON with the `MissionJson` Model Schema:
+> The endpoint returns JSON with the [MissionJson](#missionjson) Model Schema:
 
 ```json
 [
@@ -870,8 +407,6 @@ isLive | boolean |  |
 
 This endpoint lists all missions on the service ([MissionJson](#missionjson)).
 
-TBD - what is the format of the within parameter below.
-
 
 ### HTTP Request
 
@@ -888,7 +423,7 @@ live | boolean | query |   | Live flights only
 completed | boolean | query |   | Completed flights only
 within | string | query |   | Flights within a specified GeoJSON polygon
 page_offset| integer | query | If paging, the record # to start with (use 0 at start)
-page_size| integer | query | If paging, the # of records in the page
+page_size| integer | query | If paging, the # of records in the page. The maximum (and default) page size is 100 records.
 order_by| string | query | To get sorted response, the field name to sort on
 order_dir| string |query  | If sorting, the optional direction. either asc or desc
 
@@ -900,9 +435,6 @@ order_dir| string |query  | If sorting, the optional direction. either asc or de
 
 ```
 
-```shell
-
-```
 
 > The command returns a string:
 
@@ -912,8 +444,6 @@ order_dir| string |query  | If sorting, the optional direction. either asc or de
 ```
 
 This endpoint creates new mission that will be given a dynamically constructed ID.
-
-TBD - if it is dynamically constructed then why is specifying an id in the body mandatory?
 
 
 ### HTTP Request
@@ -961,73 +491,31 @@ body | [MissionJson](#missionjson) | body | Y | The mission parameters
 
 
 
-## Get live mission updates (GET)
-
-```python
-
-```
-
-
-```shell
-
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{}
-```
-
-This is an atmosphere endpoint (`AtmosphereClient`) containing an endless stream of mission update messages.
-
-TBD - need more information on how to use this client.
-
-### HTTP Request
-
-`GET /mission/live`
-
-
-
-##  Get live mission updates (POST)
-
-```python
-
-```
-
-
-```shell
-
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{}
-```
-
-This is an atmosphere endpoint (`AtmosphereClient`) containing an endless stream of mission update messages.
-
-
-### HTTP Request
-
-`POST /mission/live`
-
-
-
-
 
 ## Get recent flights for global map
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+def recentmissions():
+    # Get recent missions in format suitable for global map view
+    r = requests.get(options.baseurl + 'mission/staticMap', 
+		params = {"api_key": apikey}
+        )
+    print 'Status code: %s' % r.status_code
+    pprint.pprint(r.json())
+    print len(r.json()['updates'])
+
+print "\nGet gets recent mission in format suitable for a global map view."	
+recentmissions()
 ```
 
 
-```shell
 
-```
-
-> The command returns JSON with the [MissionJson](#missionjson) Model Schema:
+> The endpoint returns JSON with the [MissionJson](#missionjson) Model Schema:
 
 ```json
 [
@@ -1074,11 +562,8 @@ This endpoint gets recent flights suitable for a global map view.
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with the [MissionJson](#missionjson) Model Schema:
+> The endpoint returns JSON with the [MissionJson](#missionjson) Model Schema:
 
 ```json
 [
@@ -1154,14 +639,25 @@ HTTP Status Code | Reason
 ## Find by id
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+def missionbyid(aId):
+    # Get mission with specified id
+    r = requests.get(options.baseurl + 'mission' + '/' + aId, 
+		params = {"api_key": apikey}
+        )
+    print 'Status code: %s' % r.status_code
+    pprint.pprint(r.json())
+
+print "\nGet specified mission by id:(3)"	
+missionbyid('3')
 ```
 
-```shell
 
-```
-
-> The command returns JSON with the [MissionJson](#missionjson) Model Schema:
+> The endpoint returns JSON with the [MissionJson](#missionjson) Model Schema:
 
 ```json
 {
@@ -1209,21 +705,14 @@ id | string | path | Y | Id of mission that needs to be fetched
 
 
 
+
 ## Update by id
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns a string:
-
-```json
-
-```
 
 This endpoint updates a specified mission with new values.
 
@@ -1235,7 +724,7 @@ This endpoint updates a specified mission with new values.
 
 ### Query Parameters
 
-> The Json Model Schema for the body parameter (`MissionJson`) is:
+> The Json Model Schema for the body parameter ([MissionJson](#missionjson)) is:
 
 ```json
 {
@@ -1280,16 +769,6 @@ body | [MissionJson](#missionjson) | body | Y | Json object with mission informa
 
 ```
 
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
-
 This endpoint deletes the mission with the specified id.
 
 
@@ -1315,9 +794,7 @@ id | string | path | Y | Id of mission that needs to be deleted
 
 ```
 
-```shell
 
-```
 
 > The command returns a string:
 
@@ -1335,7 +812,7 @@ This endpoint creates a new mission object with a specified id.
 
 ### Query Parameters
 
-> The Json Model Schema for the body parameter (`MissionJson`) is:
+> The Json Model Schema for the body parameter ([MissionJson](#missionjson)) is:
 
 ```json
 {
@@ -1374,17 +851,14 @@ body | [MissionJson](#missionjson) | body | Y | Json object with mission informa
 
 
 
-## Get the analysis.json by id
+## Get analysis.json by id
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 {
@@ -1431,17 +905,14 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Get the dseries by id
+## Get dseries by id
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 [
@@ -1490,18 +961,15 @@ id | string | path | Y | Id of mission to be read
 
 
 
-##  Get the messages.geo.json by id
+## Get messages.geo.json by id
 
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 [
@@ -1552,16 +1020,12 @@ id | string | path | Y | Id of mission to be read
 
 
 
-
-## Get the messages.gmaps.kmz by id
+## Get messages.gmaps.kmz by id
 
 ```python
 
 ```
 
-```shell
-
-```
 
 > The command returns an `array[string]`
 
@@ -1585,17 +1049,15 @@ id | string | path | Y | Id of mission to be read
 
 
 
-##  Get the messages.json for the specified mission
+## Get messages.json by mission id
 
 ```python
 
 ```
 
-```shell
 
-```
 
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 {
@@ -1647,15 +1109,13 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Get the messages.kml by id
+## Get messages.kml by id
 
 ```python
 
 ```
 
-```shell
 
-```
 
 > The command returns an `array[string]`
 
@@ -1680,15 +1140,12 @@ id | string | path | Y | Id of mission to be read
 
 
 
-##  Get the messages.kmz by id
+## Get messages.kmz by id
 
 ```python
 
 ```
 
-```shell
-
-```
 
 > The command returns an `array[string]`
 
@@ -1711,17 +1168,14 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Get the messages.tlog by id
+## Get messages.tlog by id
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 {
@@ -1773,71 +1227,13 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Set the openTicket on id.
+
+## Get parameters.complete by id
 
 ```python
 
 ```
 
-```shell
-
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{
-}
-```
-
-This endpoint sets the openTicket on a specified mission.
-
-TBD - What is an openticket?
-
-
-### HTTP Request
-
-`POST /mission/{id}/openTicket`
-
-
-### Query Parameters
-
-> The Json Model Schema for the body parameter (`openTicket`) is:
-
-```json
-{
-  "extraInfo": "",
-  "priority": ""
-}
-```
-
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of mission to be appended
-openTicket | body | openTicket | Y | Id of mission to be read
-
-The `openTicket` data type has the following parameters
-
-Parameter | Data Type | Required | Description
---------- | ------- | ------- | -----------
-extraInfo | string | Y | 
-priority | string |  | 
-
-
-
-
-## Get the parameters.complete by id
-
-```python
-
-```
-
-```shell
-
-```
 
 > The command returns a string:
 
@@ -1865,18 +1261,15 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Get the parameters.json by id
+## Get parameters.json by id
 
-REMOVEME_WHEN_DONE check query parameters and error codes
 ```python
 
 ```
 
-```shell
 
-```
 
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 [
@@ -1926,15 +1319,12 @@ id | string | path | Y | Id of mission to be read
 
 
 
-## Get the parameters.share by id
+## Get parameters.share by id
 
 ```python
 
 ```
 
-```shell
-
-```
 
 > The command returns a string:
 
@@ -1967,11 +1357,8 @@ id | string | path | Y | Id of mission to be read
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON (`JValue`) with this Model Schema:
+> The endpoint returns JSON (`JValue`) with this Model Schema:
 
 ```json
 {}
@@ -2002,7 +1389,7 @@ param | string | path | Y | The parameter to read from the object
 
 
 
-# vehicle - Vehicle operations
+# /vehicle - Vehicle operations
 
 This command exposes operations for browsing and searching lists of vehicles, and retrieving single vehicles. 
 
@@ -2070,21 +1457,26 @@ leastSigBits | integer |  |
 ```python
 import requests
 
-url = "http://api.droneshare.com/api/v1/vehicle/"
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
 
-headers = {'authorization': 'DroneApi apikey="89b511b1.d884d1cb57306e63925fcc07d032f2af"'}
+def allvehicles(aPageSize=100,aPageOffset=0):
+    # Get all vehicles
+    r = requests.get(options.baseurl + 'vehicle', 
+		params = {"api_key": apikey, "page_offset":aPageOffset,"page_size": aPageSize},
+        )
+    print 'Status code: %s' % r.status_code
+    print 'Number of vehicles in page: %s' % len(r.json())
+    pprint.pprint(r.json())
+	
+print "\nGet all vehicles (pagesize:5, pageoffset:3)"	
+allvehicles(aPageSize=5,aPageOffset=3)
 
-response = requests.request("GET", url, headers=headers)
-
-print(response.text)
 ```
 
 
-```shell
 
-```
-
-> The command returns JSON with the [VehicleJson](#vehiclejson) Model Schema:
+> The endpoint returns JSON with the [VehicleJson](#vehiclejson) Model Schema:
 
 ```json
 [
@@ -2123,7 +1515,7 @@ This endpoint retrieves all vehicles.
 Parameter | Parameter type | Data type | Description
 --------- | ------- | ------- | -----------
 page_offset| query | integer | If paging, the record # to start with (use 0 at start)
-page_size| query | integer | If paging, the # of records in the page
+page_size| query | integer | If paging, the # of records in the page. The default and maximum page_size is 100 records.
 order_by| query | string | To get sorted response, the field name to sort on
 order_dir| query | string | If sorting, the optional direction. either asc or desc
 
@@ -2133,23 +1525,31 @@ order_dir| query | string | If sorting, the optional direction. either asc or de
 
 ## Create a new object with auto-ID
 
-
 ```python
+import requests
 
-```
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+# options.username and options.password are droneshare passwords that will own the vehicle
 
-```shell
+def create_vehicle():
+    # Create a test vehicle. 
+    # Requires DroneShare username and password.
+    r = requests.put(options.baseurl + 'vehicle',
+        params = {"api_key": apikey, "login": options.username, "password":options.password},
+        headers = {"content-type": "application/json"},
+        data = '{ "name": "DELETEME - Test Vehicle", "vehicleType": "quadcopter",  "autopilotType": "apm", "summaryText": "This vehicle is added by example code" }'
+		)
+	return r
 
-```
-
-> The command returns JSON with this Model Schema:
-
-```json
-{
-}
+r = create_vehicle()
+print r.status_code
+print pprint.pprint(r.json())
 ```
 
 This endpoint creates a new vehicle record with a dynamically constructed ID.
+
+The request requires both api key and droneshare login parameters. It returns JSON object for the created record.
 
 
 ### HTTP Request
@@ -2158,7 +1558,6 @@ This endpoint creates a new vehicle record with a dynamically constructed ID.
 
 
 ### Query Parameters
-
 
 > The Json Model Schema for the body parameter ([VehicleJson](#vehiclejson)) is:
 
@@ -2190,7 +1589,7 @@ The query parameters are:
 
 Parameter | Data Type | Parameter Type | Required | Description
 --------- | ------- | ------- | ------- | -----------
-body | [VehicleJson](#vehiclejson) | body | Y | The vehicle parameters
+body | [VehicleJson](#vehiclejson) | body | Y | The vehicle parameters.
 
 
 
@@ -2199,14 +1598,26 @@ body | [VehicleJson](#vehiclejson) | body | Y | The vehicle parameters
 ## Find by id
 
 ```python
+import requests
 
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+
+
+def vehiclebyid(aId):
+    # Get vehicle with specified id
+    r = requests.get(options.baseurl + 'vehicle' + '/' + aId, 
+		params = {"api_key": apikey}
+        )
+    print 'Status code: %s' % r.status_code
+    pprint.pprint(r.json())
+
+print "\nGet specified vehicle by id:(3)"	
+vehiclebyid('3')
 ```
 
-```shell
 
-```
-
-> The command returns JSON with this Model Schema:
+> The endpoint returns JSON with this Model Schema:
 
 ```json
 {
@@ -2232,9 +1643,9 @@ body | [VehicleJson](#vehiclejson) | body | Y | The vehicle parameters
 }
 ```
 
-This endpoint gets a vehicle with the specified ID.
+This endpoint gets a vehicle with the specified ID. 
 
-TBD. Is this vehicle a global id or associated with the particular user?
+This is the "database" record ``id``, not the vehicle ``uuid``.
 
 
 ### HTTP Request
@@ -2257,18 +1668,27 @@ id | string | path | Y | Id of vehicle that needs to be fetched
 ## Update by id
 
 ```python
+import requests
+
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+# options.username and options.password are droneshare passwords that own the vehicle
+
+
+def updatevehiclebyid(aId):
+    # Update vehicle with specified id
+    # This example just renames the vehicle.
+    r = requests.put(options.baseurl + 'vehicle' + '/' + aId,
+        params = {"api_key": apikey, "login": options.username, "password":options.password},
+        headers = {"content-type": "application/json"},
+        data = '{ "name": "DELETEME - Test Vehicle WITH NEW NAME" }'
+		)
+    return r
+
+r=updatevehiclebyid('a valid id')
 
 ```
 
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
 
 This endpoint updates the information in the vehicle record with the specified id.
 
@@ -2318,19 +1738,26 @@ id | string | path | Y | Id of vehicle that needs to be updated
 
 ## Delete by id
 
+> This code fragment shows the Python call to delete a vehicle with a specific id.
+
 ```python
+import requests
+
+# apikey is appid.appkey
+# baseurl is http://api.3drobotics.com/api/v1/'
+# options.username and options.password are droneshare passwords that own the vehicle
+
+def deletevehiclebyid(aId):
+    # Delete vehicle with specified id
+    r = requests.delete(options.baseurl + 'vehicle' + '/' + aId, 
+        params = {"api_key": apikey, "login": options.username, "password":options.password}
+        )
+    return r
+
+r=deletevehiclebyid()
 
 ```
 
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
 
 This endpoint deletes the vehicle with the specified id.
 
@@ -2358,9 +1785,6 @@ id | string | path | Y | Id of vehicle that needs to be deleted.
 
 ```
 
-```shell
-
-```
 
 > The command returns a string:
 
@@ -2415,146 +1839,14 @@ id | string | path | Y | Id of vehicle that needs to be created
 
 
 
-## Get the airspeed for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a number (the airspeed).
-
-This endpoint gets the airspeed for the specified vehicle.
-
-TBD. What are the units?
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/airspeed`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read.
-
-
-
-
-## Get the batterySOC for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a number (the battery soc).
-
-
-This endpoint gets the batterSOC for the specified vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/batterySOC`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read
-
-
-
-
-## Get the battery voltage for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a number (the battery voltage).
-
-This endpoint gets the battery voltage for the specified vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/batteryVolt`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read
-
-
-
-
-
-##  Get the groundspeed for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a number (the groundspeed).
-
-This endpoint gets the groundspeed for the specified vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/groundspeed`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read
-
-
-
-
-
 ## Add a new mission
 
 ```python
 
 ```
 
-```shell
 
-```
-
-> The command returns JSON with the [VehicleJson](#vehiclejson) Model Schema:
+> The endpoint returns JSON with the [VehicleJson](#vehiclejson) Model Schema:
 
 ```json
 [
@@ -2598,190 +1890,6 @@ Parameter | Data Type | Parameter Type | Required | Description
 --------- | ------- | ------- | ------- | -----------
 file | file | body | Y | Log file as a standard html form upload POST
 id | string | path | Y | Id of vehicle to be have mission added
-
-
-
-
-
-## Get the mode for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string for the current mode.
-
-This endpoint gets the mode for the specified vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/mode`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read
-
-
-
-
-
-##  Set the mode on id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string.
-
-```json
-
-```
-
-This endpoint sets the mode on specified vehicle.
-
-TBD 
-- What is the description for the body parameters and what needs to be in it?
-- What is the string returned
-
-
-### HTTP Request
-
-`PUT /vehicle/{id}/mode`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be changed
-body | string | body | Y | 
-mode | string | body | Y | New value for the mode
-
-
-
-## Get the rcChannels for id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns and `array[integer]` with the channel information.
-
-This endpoint gets the rcChannels for the specified vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/rcChannels`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be read
-
-
-
-
-
-## Set the rcOverrides on id
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a string:
-
-```json
-
-```
-
-This endpoint set the rcOverrides on a specified vehicle.
-
-TBD What is the string that is returned.
-TBD What is the body here. Could just be the rcOverrides but it is not clear
-
-
-### HTTP Request
-
-`PUT /vehicle/{id}/rcOverrides`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle to be changed
-body | array[integer] | body | Y | 
-rcOverrides | array[integer] | body | Y | New value for the rcOverrides
-
-
-
-
-
-## Get a parameter from a vehicle
-
-```python
-
-```
-
-```shell
-
-```
-
-> The command returns a `JValue` with the value of the parameter:
-
-```json
-{}
-```
-
-This endpoint gets a specified parameter from a given vehicle.
-
-
-### HTTP Request
-
-`GET /vehicle/{id}/{param}`
-
-
-### Query Parameters
-
-The query parameters are:
-
-Parameter | Data Type | Parameter Type | Required | Description
---------- | ------- | ------- | ------- | -----------
-id | string | path | Y | Id of vehicle that needs to be fetched
-param | string | path | Y | The parameter to read from the object
-
-
 
 
 
